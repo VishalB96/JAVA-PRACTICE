@@ -1,0 +1,54 @@
+public class Demo1{
+	boolean value;
+	
+	synchronized static disp1(){
+		for(int i = 1; i<=50){
+		while(value)		
+		{
+			try
+			{wait();}
+			catch(InterruptedException ie){}
+		}
+		
+		System.out.println(i++);
+		notifyAll();
+		value = true;	
+		}
+	}
+	synchronized static disp2(){
+		for(int i = 50; i>0){
+		while(!value)		
+		{
+			try
+			{wait();}
+			catch(InterruptedException ie){}
+		}
+		
+		System.out.println(i--);
+		notifyAll();
+		value = false;	
+		}
+	}
+
+	public static void main(String[] args){
+		ExecutorService exc =Executor.newCachedThreadPool();
+		exc.execute(new Th1());
+		exc.execute(new Th2());
+		exc.Shutdown();
+		System.out.println("DONE");
+	}
+
+}
+
+class Thr1 implements Runnable{
+	public void run(){
+		Demo1.disp1();
+	}
+}
+
+class Th2 implements Runnable{
+	public void run(){
+	Demo1.disp2();
+}
+}
+
