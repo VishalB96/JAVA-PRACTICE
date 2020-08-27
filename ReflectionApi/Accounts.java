@@ -10,7 +10,7 @@
 public abstract class Accounts {
 	private double MinimumBalance;
 	private double CurrentBalance;
-	private static double AccountNumber= 100000;
+	private static long AccountNumber= 100000;
 	private String Name,Address;
 
 	{AccountNumber++;}
@@ -82,7 +82,7 @@ public abstract class Accounts {
 	/**
 	 * @return the accountNumber
 	 */
-	public static double getAccountNumber() {
+	public static long getAccountNumber() {
 		return AccountNumber;
 	}
 	abstract void DisplayBalance();
@@ -92,7 +92,7 @@ public abstract class Accounts {
 }
 /*------------------------------------------------SAVINGS ACCOUNT CLASS---------------------------------------------------*/
 class Savings extends Accounts{
-	private double SavingAccountNumber;
+	private long SavingAccountNumber;
 
 	public Savings (){
 		this.setName("NONAME");
@@ -108,7 +108,7 @@ class Savings extends Accounts{
 	/**
 	 * @return the savingAccountNumber
 	 */
-	public double getSavingAccountNumber() {
+	public long getSavingAccountNumber() {
 		return SavingAccountNumber;
 	}
 	
@@ -144,7 +144,7 @@ class Savings extends Accounts{
 
 class Current extends Accounts{
 	
-	private double CurrentAccountNumber;
+	private long CurrentAccountNumber;
 
 	public Current(){
 		this.setName("NONAME");
@@ -157,7 +157,7 @@ class Current extends Accounts{
 		this.setAddress(Address);
 		this.CurrentAccountNumber = Accounts.getAccountNumber();
 	}
-	public double getCurrentAccountNumber() {
+	public long getCurrentAccountNumber() {
 		return CurrentAccountNumber;
 	}
 	@Override

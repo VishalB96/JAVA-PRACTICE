@@ -12,9 +12,10 @@ public class BankApp{
             Constructor ctor=null;
             ctor=cDef.getDeclaredConstructor(String.class,String.class);
             ob1 = ctor.newInstance(info[1],info[2]);
-        } catch (Exception e) {
+        } catch (ClassNotFoundException|NoSuchMethodException|InstantiationException | IllegalAccessException | IllegalArgumentException
+				| InvocationTargetException e) {
             //TODO: handle exception
-            System.out.println(e);
+            e.printStackTrace();
         }
         return ob1;
     }
