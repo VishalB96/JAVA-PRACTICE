@@ -32,7 +32,7 @@ public class Demo5
 			ss=new String(c);
 			System.out.println(ss);
 			}
-		catch(Exception ee)
+		catch(IOException ee)
 		{
 			ee.printStackTrace();
 		}
