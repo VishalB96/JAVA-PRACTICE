@@ -1,0 +1,28 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class jdb1 {
+
+	public static void main(String[] args) {
+		
+		String ss = "jdbc:mysql://localhost:3306/mydb";
+		try(Connection conn = DriverManager.getConnection(ss, "root", "root")){
+			System.out.println("class of conn is "+conn.getClass());
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery("SELECT * FROM dept");
+			while(rs.next()) {
+				int no = rs.getInt("deptno");
+				String name = rs.getString("dname");
+				String add = rs.getString("loc");
+				System.out.println(no + "\t" + name + "\t" + add);
+			}
+		}
+		catch(Exception ee) {
+			ee.printStackTrace();
+		}
+		
+	}
+
+}
